@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kungiyar Hadinkan Hausa Da Hausawan Duniya Charity Foundation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --accent-blue: #3b82f6;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Hero section with background image */
+        .hero-section {
+            background-image: url('ben.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+        }
+        .hero-overlay {
+            background-color: rgba(30, 58, 138, 0.7);
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .mobile-menu.active {
+            max-height: 500px;
+            padding: 1rem 0;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        /* Fade-in animation for all sections */
+        section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero text animation */
+        .hero-section h1 {
+            animation: slideUp 1s ease-out 0.2s forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-section p {
+            animation: slideUp 1s ease-out 0.4s forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-section .flex {
+            animation: fadeIn 1s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Button hover animations */
+        .btn-primary, 
+        .btn-secondary {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: white !important;
+            color: var(--primary-blue) !important;
+            transform: translateY(-3px);
+        }
+
+        /* Founder image animation */
+        .founder-img {
+            transition: transform 0.3s ease;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .founder-img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Mission statement animation */
+        .mission-statement {
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .mission-statement::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent-blue);
+            animation: expandLine 1.5s ease-out forwards;
+        }
+
+        @keyframes expandLine {
+            from { width: 0 }
+            to { width: 100px }
+        }
+
+        /* Social media icon animations */
+        .fab {
+            transition: all 0.3s ease;
+        }
+
+        .fab:hover {
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        /* Navbar animation */
+        nav {
+            transition: all 0.3s ease;
+        }
+
+        /* Scroll-triggered animations */
+        @media (prefers-reduced-motion: no-preference) {
+            .animate-on-scroll {
+                opacity: 0;
+                transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            }
+            
+            .animate-from-left {
+                transform: translateX(-50px);
+            }
+            
+            .animate-from-right {
+                transform: translateX(50px);
+            }
+            
+            .animate-from-bottom {
+                transform: translateY(50px);
+            }
+            
+            .animate-visible {
+                opacity: 1;
+                transform: translateX(0) translateY(0);
+            }
+        }
+
+        /* Text formatting for biography */
+        .bio-text {
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+
+        .bio-text p {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <nav class="bg-white shadow-md py-4 px-6 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-xl font-bold text-blue-800">Kungiyar Hadinkan Hausa Da Hausawan Duniya Charity Foundation</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-blue-800 hover:text-blue-600 font-medium">Home</a>
+                <a href="about.html" class="text-gray-600 hover:text-blue-600 font-medium">About</a>
+                <a href="projects.html" class="text-gray-600 hover:text-blue-600 font-medium">Projects</a>
+                <a href="contact.html" class="text-gray-600 hover:text-blue-600 font-medium">Get Involved</a>
+                <a href="gallery.html" class="text-gray-600 hover:text-blue-600 font-medium">Gallery</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-blue-800 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden">
+            <div class="flex flex-col space-y-4 pt-4">
+                <a href="index.html" class="text-blue-800 hover:text-blue-600 font-medium">Home</a>
+                <a href="about.html" class="text-gray-600 hover:text-blue-600 font-medium">About</a>
+                <a href="projects.html" class="text-gray-600 hover:text-blue-600 font-medium">Projects</a>
+                <a href="contact.html" class="text-gray-600 hover:text-blue-600 font-medium">Get Involved</a>
+                <a href="gallery.html" class="text-gray-600 hover:text-blue-600 font-medium">Gallery</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative flex items-center justify-center hero-section">
+        <div class="absolute inset-0 hero-overlay"></div>
+        <div class="max-w-4xl mx-auto text-center px-6 z-10 py-20">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">Helping the people in need Worldwide</h1>
+            <p class="text-xl text-white mb-8">Join us in promoting and supporting communities in need</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="contact.html" class="btn-primary bg-white text-blue-800 px-8 py-3 rounded-full font-bold hover:bg-blue-100 transition duration-300">Join Our Cause</a>
+                <a href="about.html" class="btn-secondary border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-blue-800 transition duration-300">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="py-20 px-6 max-w-6xl mx-auto animate-from-left">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/3">
+                <img src="muq.jpg" alt="Founder of the Foundation" class="rounded-lg shadow-xl w-full h-auto founder-img">
+            </div>
+            <div class="md:w-2/3 bio-text">
+                <h2 class="text-3xl font-bold text-blue-800 mb-6">BIOGRAPHY OF DR. MOHAMMED SEIDU</h2>
+                <p>
+                    
+                    Dr. Mohammed Saeed, President of this revered organization. &nbsp; As a seasoned entrepreneur and leader, my journey has been shaped by a rich tapestry of experiences. From my family's esteemed cola nut business to my tenure as a football administrator and chairman of the regional beach soccer association for Greater Accra, I have been privileged to navigate diverse fields. Additionally, I have served as a political consultant and business consultant, and currently, I am the West Africa Coordinator for Zada Security Company, a British-based organization.
+                    As I stand before you today, I am reminded of the profound heritage that has shaped my identity. My grandfather, Iddrisu Mohammad Yanga, migrated from Kano Dala Regiya Hudu to Tamale, Ghana, alongside his brother Dan Auta, a lineage that connects me to the revered Alhaji Lawal Mai Kujera na Kumasi.
+                    My father, Alhaji Seidu Iddrissu, also known as Alhaji Tanko, was born in Tamale Moshie Zongo and later settled in Asokore Effiduase, where he met my mother, Adama Kassim. I was born in this historic town, steeped in tradition and culture.
+                    I proudly acknowledge my maternal lineage, tracing back to Dusinma Kasina State in Nigeria, migrated to Zugu Benin to Yendi Ghana to Slaga and last but not the least to Asokore Ashanti the legacy of my great-grandfather, Mallam Awudu, a prominent figure in our community.
+                    I also pay tribute to the esteemed leaders of Asokore Zongo, including Baba Baraw Abdallah, the first Sarkin Zongo; my grandfather, Baba Kassim Abdallah, the second Sarkin Zongo; and the current Sarki Muntaka Huseini.
+                    As we convene today, I emphasize the significance of preserving our community's land ownership and heritage. The land of Asokore Zongo is an integral part of our history, and it is our collective responsibility to protect and honor our traditions.
+                    Thank you for your attention, and I look forward to working together to uphold the values and legacy of Hadinkan Hausa Da Hausawan Duniya.
+                </p>
+            </div>
+
+        </div>
+    </section>
+    <section class="py-20 px-6 max-w-6xl mx-auto animate-from-left">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/3">
+                <img src="garba.jpg" alt="Founder of the Foundation" class="rounded-lg shadow-xl w-full h-auto founder-img">
+            </div>
+            <div class="md:w-2/3 bio-text">
+                <h2 class="text-3xl font-bold text-blue-800 mb-6">GARBA ALI (GARBATI BABAN ALBANI)</h2>
+                <P> Secretary General</P>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="py-20 px-6 max-w-6xl mx-auto animate-from-bottom">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-blue-800 mb-4 mission-statement">Our Mission Statement</h2>
+            <div class="text-lg text-gray-600 max-w-3xl mx-auto">
+                <p class="mb-4">
+                    At Kungiyar Hadinkan Hausa Da Hausawan Duniya Charity Foundation, our mission is to uplift and empower the underprivileged by providing essential support to widows, needy individuals, and immigrants facing hardship in Ghana.
+                    We are committed to fostering dignity, self-sufficiency, and hope through humanitarian aid, skill development programs, and social integration initiatives.
+                    Our foundation extends a helping hand to immigrants, including Lebanese, Nigerian, Senegalese, and other vulnerable groups, who migrate to Ghana in search of a better life but face economic and social challenges.
+                    By offering food assistance, vocational training, financial literacy programs, and community support, we strive to create sustainable solutions that break the cycle of poverty.
+                    Through unity, compassion, and cultural solidarity, we aim to build a society where every individual, regardless of background or status, has the opportunity to thrive and contribute meaningfully to their communities.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-blue-800 text-white py-12 px-6">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4">Kungiyar Hadinkan Hausa Da Hausawan Duniya Charity Foundation</h3>
+                <div class="max-w-6xl mx-auto mt-8 pt-8 border-t border-blue-700 text-center">
+                    <p>&copy; 2025 Kungiyar Hadinkan Hausa Da Hausawan Duniya Charity Foundation. All rights reserved.</p>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="hover:text-blue-200">Home</a></li>
+                    <li><a href="about.html" class="hover:text-blue-200">About Us</a></li>
+                    <li><a href="projects.html" class="hover:text-blue-200">Our Projects</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+                <div class="flex space-x-4">
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/g/15MXfgbsSJ/?mibextid=K35XfP" class="text-2xl text-white hover:text-blue-200"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/hadinkanhausawanafrica?igsh=NTZjdjE1b3YwOWhh" class="text-2xl text-white hover:text-blue-200"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@khkhhd?si=2cuRHmhCoNgcykDe" class="text-2xl text-white hover:text-blue-200"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.tiktok.com/@hadinkan.hausa?_t=ZM-8vjOJzC49o6&_r=1" class="text-2xl text-white hover:text-blue-200"><i class="fab fa-tiktok"></i></a>
+                        <a href="mailto:kungiyarhadinkanhausadahausawanduniya@gmail.com" class="text-2xl text-white hover:text-blue-200"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:+233244662748" class="text-2xl text-white hover:text-blue-200"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+                
+                // Change icon from bars to times when menu is open
+                const icon = this.querySelector('i');
+                if (mobileMenu.classList.contains('active')) {
+                    icon.classList.replace('fa-bars', 'fa-times');
+                } else {
+                    icon.classList.replace('fa-times', 'fa-bars');
+                }
+            });
+            
+            // Close menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    mobileMenuButton.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                });
+            });
+
+            // Scroll animation functionality
+            const animateElements = document.querySelectorAll('section, .animate-on-scroll');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show', 'animate-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Hero animations
+            const heroElements = [
+                document.querySelector('.hero-section h1'),
+                document.querySelector('.hero-section p'),
+                document.querySelector('.hero-section .flex')
+            ];
+            
+            heroElements.forEach((el, index) => {
+                if (el) {
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, 200 + (index * 200));
+                }
+            });
+        });
+    </script>
+</body>
+</html>
